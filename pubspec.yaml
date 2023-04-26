@@ -1,0 +1,15 @@
+name: grpc_array_bug_demo
+description: Demonstration of gRPC client bug
+publish_to: none
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  async: ^2.2.0
+  grpc: ^3.1.0 
+  protobuf: ^2.0.0
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.6.0

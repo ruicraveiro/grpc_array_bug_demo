@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package grpc;
+
+service FileService {
+  rpc GetFiles(Empty) returns (stream File) {}
+}
+
+message File {
+  bytes contents = 1;
+}
+
+message Empty {
+}
+
