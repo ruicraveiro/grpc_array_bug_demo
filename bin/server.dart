@@ -1,8 +1,10 @@
+import 'dart:ffi';
+
 import 'package:grpc_array_bug_demo/src/generated/file_service.pbgrpc.dart';
 import 'package:grpc/grpc.dart' as grpc;
 import 'dart:math' as m;
 
-const fileSize = 0x1000;
+const fileSize = 0x100000;
 
 void main(List<String> args) async {
   final server = grpc.Server([FileService()]);
@@ -20,13 +22,13 @@ class FileService extends FileServiceBase {
 
   @override
   Stream<File> getFiles(grpc.ServiceCall call, Empty request) async* {
-    for (var index = 0; index < 30; index++) {
-      try {
+    try {
+      for (var index = 0; index < 30; index++) {
         final imgRes = File(contents: file);
         yield imgRes;
-      } catch (ex) {
-        print('Could not send with $ex');
       }
+    } catch (ex) {
+      print('Could not send with $ex');
     }
   }
 }

@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package grpc;
 
+option go_package = "./stubs";
+
 service FileService {
   rpc GetFiles(Empty) returns (stream File) {}
 }
